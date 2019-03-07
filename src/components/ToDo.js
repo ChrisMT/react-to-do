@@ -9,8 +9,16 @@ class ToDo extends Component {
            type="checkbox" checked={this.props.isCompleted}
            onChange ={ this.props.toggleComplete } />
          <span>{ this.props.description }</span>
-       </li>
+         <button onClick = {this.props.deleteTodo} >delete </button>
 
+         {/* <div className="item-remove-div">
+           <button
+            // className="item-remove"
+            onClick={() => this.props.onDeleteList(todo)}>
+            Remove
+           </button>
+          </div> */}
+       </li>
     );
  }
 }

@@ -13,6 +13,7 @@ class App extends Component {
       ],
       newTodoDescription: ''
     };
+
   }
 
 handleChange(e) {
@@ -35,6 +36,23 @@ handleSubmit(e) {
     this.setState({ todos: todos });
   }
 
+  deleteTodo(name){
+      const newTodos = this.state.todos.filter(todo => todo.description !== name)
+      this.setState({
+          todos: newTodos
+      })
+      console.log(newTodos);
+  }
+
+
+  // onDelete= (item) =>{
+  //  // this.setState ({
+  //  //   items: this.state.items.filter((i) => i.index !== item.index)
+  //  // })
+  //  this.state.items.splice(item, 1);
+  //  this.setState({items: this.state.items});
+ // }
+
 
   render() {
     return (
@@ -51,8 +69,12 @@ handleSubmit(e) {
             <ToDo key={ index }
               description={ todo.description }
               isCompleted={ todo.isCompleted }
-              toggleComplete={ () => this.toggleComplete(index) } />
+              toggleComplete={ () => this.toggleComplete(index) }
+              deleteTodo={()=> this.deleteTodo(todo.description)}/>
             )}
+
+            {/* <ToDo todos={this.state.todo}  onDeleteList={this.onDelete}/> */}
+
         </ul>
         <form onSubmit={ (e) => this.handleSubmit(e) }>
           <input
